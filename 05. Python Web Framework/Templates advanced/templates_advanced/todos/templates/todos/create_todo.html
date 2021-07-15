@@ -1,0 +1,11 @@
+{% extends 'shared/base.html' %}
+
+
+{% block content %}
+    <form action="{% url 'create todo' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button>Create</button>
+    </form>
+{% endblock content %}
+    
