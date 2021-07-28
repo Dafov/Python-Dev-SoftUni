@@ -1,9 +1,17 @@
-from django.db import models
+import os
+from os.path import join
 
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.db import models
 
 # def is_positive(value):
 #     if value <= 0:
 #         raise ValidationError
+
+
+UserModel = get_user_model()
+
 
 class Pet(models.Model):
     TYPE_CHOICE_DOG = 'dog'
@@ -25,7 +33,15 @@ class Pet(models.Model):
     )
     age = models.PositiveIntegerField()
     description = models.TextField()
-    image_url = models.URLField()
+    # image_url = models.URLField()
+    image = models.ImageField(
+        upload_to='pets',
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
 
     # age = models.IntegerField(
     #     null=False,
@@ -42,3 +58,7 @@ class Pet(models.Model):
 
 class Like(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
