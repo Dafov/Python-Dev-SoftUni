@@ -82,8 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'petstagram',
         'USER': 'db_admin',
-        'PASSWORD': '1234',
+        'PASSWORD': '1123QwER',
         'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
